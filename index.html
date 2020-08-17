@@ -1,0 +1,251 @@
+<script>
+// Zaprojektuj grę w "wisielca"
+// Program pyta o hasło
+// W kolejnych krokach gracz odgaduje litery
+// Wyświetlaj odgadnięte litery a pozostałe zastąp *
+// Koniec programu po odgadnięciu hasła
+// * Max liczba prób: 5
+// * Możliwość odgadnięcia całego hasła
+// *** Stwórz tablicę z hasłami
+
+let trybGry = prompt(`Zagrajmy w Wisielca
+Jaki wybierasz poziom trudności?
+👼 Łatwy 👼 - Nielimitowane zgadywanie oraz krótkie hasła. Wpisz 1 aby zagrać.
+😊 Średni 😊 - Pula trafień wynosząca długość hasła. Wpisz 2 aby zagrać.
+😈 Ciężki 😈 - Tylko 5 trafień i dowolna długość haseł. Wpisz 3 aby zagrać.`);
+
+// 👼 Łatwy 👼
+trybGryEasy = () => {
+	// Tablica haseł
+	let hasla = [
+		"flaga",
+		"obraz",
+		"lista",
+		"wideo",
+		"koszt",
+		"cecha",
+		"rzecz",
+		"widok",
+		"efekt",
+		"punkt",
+		"fakt",
+		"kraj",
+		"pole",
+		"plik",
+		"wiek",
+		"stan",
+		"rola",
+		"krok",
+		"plan",
+		"czas",
+		"moc",
+		"rok",
+		"los",
+		"dom",
+		"bok",
+		"noc",
+		"gra",
+		"cel",
+		"moc",
+		"rak",
+	];
+
+	// Losuj hasło
+	let haslo = hasla[Math.floor(Math.random() * hasla.length)];
+
+	// Przygotuj tablicę dla odpowiedzi
+	let odpowiedzi = [];
+	for (let i = 0; i < haslo.length; i++) {
+		odpowiedzi[i] = "*";
+	}
+	let pozostaleLitery = haslo.length;
+
+	// Właściwa pętla gry
+	while (pozostaleLitery > 0) {
+		// Pokaż graczowi jego postęp
+		alert(`Hasło składa się z ${haslo.length} liter: ${odpowiedzi.join(" ")}`);
+
+		// Przyjmij próbę odgadnięcia
+		let litera = prompt(`Wprowadź literę.`);
+		if (litera == haslo) {
+			pozostaleLitery = 0;
+		} else if (litera.length !== 1) {
+			alert(`Spróbuj odgadnąć tylko jedną literę lub inne słowo.`);
+		} else {
+			// Uaktualnij stan gry
+			for (let j = 0; j < haslo.length; j++) {
+				if (haslo[j] === litera) {
+					odpowiedzi[j] = litera;
+					pozostaleLitery--;
+				}
+			}
+		}
+	}
+	// Wygrana gracza
+	alert(`🏆 Dobra robota! Hasło to: ${haslo}! 🏆`);
+};
+
+// 😊 Średni 😊
+trybGryMed = () => {
+	// Tablica haseł
+	let hasla = [
+		"javascript",
+		"antena",
+		"prasa",
+		"okno",
+		"parasol",
+		"orkiestra",
+		"zagadka",
+		"garderoba",
+		"kierownik",
+		"skrzynka",
+		"guma",
+		"strych",
+		"bekon",
+		"most",
+		"ranek",
+		"zapalniczka",
+		"wiatrak",
+		"klient",
+		"rzecz",
+		"prawo",
+		"kobieta",
+		"kwestia",
+		"organizacja",
+		"komputer",
+		"raport",
+		"projekt",
+		"pytanie",
+		"komentarz",
+		"rodzaj",
+		"firma",
+	];
+
+	// Losuj hasło
+	let haslo = hasla[Math.floor(Math.random() * hasla.length)];
+	// Przygotuj tablicę dla odpowiedzi
+	let odpowiedzi = [];
+	for (let i = 0; i < haslo.length; i++) {
+		odpowiedzi[i] = "*";
+	}
+	let pozostaleLitery = haslo.length;
+	let pozostaleStrzaly = 0;
+
+	// Właściwa pętla gry
+	while (pozostaleLitery > 0) {
+		// Pokaż graczowi jego postęp
+		alert(`Hasło składa się z ${haslo.length} liter: ${odpowiedzi.join(" ")}`);
+
+		// Przyjmij próbę odgadnięcia
+		let litera = prompt(`Wprowadź literę.`);
+		pozostaleStrzaly++;
+		if (pozostaleStrzaly >= haslo.length) {
+			alert(`🙊🙈🙉\nNie udało Ci się, wyczerpałeś limit ${pozostaleStrzaly} trafień. Hasło to: ${haslo}`);
+			break;
+		}
+		if (litera == haslo) {
+			pozostaleLitery = 0;
+		} else if (litera.length !== 1) {
+			alert(`Spróbuj odgadnąć tylko jedną literę lub inne słowo.`);
+		} else {
+			// Uaktualnij stan gry
+			for (let j = 0; j < haslo.length; j++) {
+				if (haslo[j] === litera) {
+					odpowiedzi[j] = litera;
+					pozostaleLitery--;
+				}
+			}
+		}
+	}
+	// Wygrana gracza
+	if (pozostaleLitery = 0) {
+		alert(`🏆🏆 Dobra robota! Hasło to: ${haslo}! 🏆🏆`);
+	}
+};
+
+// 😈 Ciężki 😈
+trybGryHard = () => {
+	// Tablica haseł
+	let hasla = [
+		"javascript",
+		"antena",
+		"prasa",
+		"okno",
+		"parasol",
+		"orkiestra",
+		"zagadka",
+		"garderoba",
+		"kierownik",
+		"skrzynka",
+		"guma",
+		"strych",
+		"bekon",
+		"most",
+		"ranek",
+		"zapalniczka",
+		"wiatrak",
+		"badanie",
+		"energia",
+		"walizka",
+		"uniwerytet",
+		"organizacja",
+		"komentarz",
+		"technologia",
+		"kontrola",
+		"edukacja",
+		"stanowisko",
+		"kredyt",
+		"klasa",
+		"akcja",
+	];
+
+	// Losuj hasło
+	let haslo = hasla[Math.floor(Math.random() * hasla.length)];
+	// Przygotuj tablicę dla odpowiedzi
+	let odpowiedzi = [];
+	for (let i = 0; i < haslo.length; i++) {
+		odpowiedzi[i] = "*";
+	}
+	let pozostaleLitery = haslo.length;
+	let pozostaleStrzaly = 0;
+
+	// Właściwa pętla gry
+	while (pozostaleLitery > 0) {
+		// Pokaż graczowi jego postęp
+		alert(`Hasło składa się z ${haslo.length} liter: ${odpowiedzi.join(" ")}`);
+
+		// Przyjmij próbę odgadnięcia
+		let litera = prompt(`Wprowadź literę.`);
+		pozostaleStrzaly++;
+		if (pozostaleStrzaly >= 5) {
+			alert(`🙊🙈🙉\nNie udało Ci się, wyczerpałeś limit ${pozostaleStrzaly} trafień. Hasło to: ${haslo}`);
+			break;
+		}
+		if (litera == haslo) {
+			pozostaleLitery = 0;
+		} else if (litera.length !== 1) {
+			alert(`Spróbuj odgadnąć tylko jedną literę lub inne słowo.`);
+		} else {
+			// Uaktualnij stan gry
+			for (let j = 0; j < haslo.length; j++) {
+				if (haslo[j] === litera) {
+					odpowiedzi[j] = litera;
+					pozostaleLitery--;
+				}
+			}
+		}
+	}
+	// Wygrana gracza
+	if (pozostaleLitery = 0) {
+		alert(`🏆🏆🏆 Dobra robota! Hasło to: ${haslo}! 🏆🏆🏆`);
+	}
+};
+// Wybór poziomu trudności
+if (trybGry == "1") {
+	trybGryEasy();
+} else if (trybGry == "2") {
+	trybGryMed();
+} else if (trybGry == "3") {
+	trybGryHard();
+}
+</script>
